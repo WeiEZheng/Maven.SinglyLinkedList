@@ -144,4 +144,32 @@ public class SinglyLinkedList <T extends Comparable> {
         }
         return true;
     }
+
+    public SinglyLinkedList<T> splice(int start, int end){
+        LinkedListNode<T> current = head;
+        SinglyLinkedList newList = new SinglyLinkedList();
+        if (end>listSize)
+            end=listSize;
+        for (int i = 0; i<end;i++){
+            if (i>=start){
+                newList.add(current.getData());
+            }
+            current = current.getNext();
+        }
+        return newList;
+    }
+
+    public void reverse(){
+        LinkedListNode<T> current = head.getNext();
+        LinkedListNode<T> previous = head;
+        LinkedListNode<T> next;
+        while (current!=null){
+            next = current.getNext();
+            current.setNext(previous);
+            previous = current;
+            current = next;
+        }
+        head.setNext(null);
+        head = previous;
+    }
 }

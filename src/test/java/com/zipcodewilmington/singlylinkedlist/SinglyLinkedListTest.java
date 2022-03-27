@@ -106,4 +106,43 @@ public class SinglyLinkedListTest {
         //Then
         Assertions.assertTrue(singlyLinkedList.equals(expectedSort));
     }
+
+    @Test
+    void splice(){
+        //Given
+        SinglyLinkedList singlyLinkedList = new SinglyLinkedList();
+        singlyLinkedList.add(1);
+        singlyLinkedList.add(2);
+        singlyLinkedList.add(3);
+        singlyLinkedList.add(2);
+        singlyLinkedList.add(2);
+        SinglyLinkedList singlyLinkedList1 = new SinglyLinkedList();
+        singlyLinkedList1.add(3);
+        singlyLinkedList1.add(2);
+        //When
+        singlyLinkedList = singlyLinkedList.splice(2, 4);
+        //Then
+        Assertions.assertTrue(singlyLinkedList1.equals(singlyLinkedList));
+    }
+    @Test
+    void reverse(){
+        //Given
+        SinglyLinkedList singlyLinkedList = new SinglyLinkedList();
+        singlyLinkedList.add(1);
+        singlyLinkedList.add(2);
+        singlyLinkedList.add(3);
+        singlyLinkedList.add(3);
+        singlyLinkedList.add(4);
+        SinglyLinkedList singlyLinkedList1 = new SinglyLinkedList();
+        singlyLinkedList1.add(4);
+        singlyLinkedList1.add(3);
+        singlyLinkedList1.add(3);
+        singlyLinkedList1.add(2);
+        singlyLinkedList1.add(1);
+        //When
+        singlyLinkedList.reverse();
+        //Then
+        Assertions.assertTrue(singlyLinkedList1.equals(singlyLinkedList));
+    }
 }
+
