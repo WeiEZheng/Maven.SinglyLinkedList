@@ -3,29 +3,33 @@ package com.zipcodewilmington.singlylinkedlist;
 /**
  * Created by leon on 1/10/18.
  */
-public class SinglyLinkedList <T> {
+public class SinglyLinkedList <T extends Comparable> {
     private LinkedListNode<T> head;
     private int listSize;
 
     public static class LinkedListNode<T> {
-        private T currentData;
-        private LinkedListNode nextData;
+        T currentData;
+        LinkedListNode<T> nextData;
 
-        public LinkedListNode(T currentData){
+        LinkedListNode(T currentData){
             this.currentData = currentData;
             this.nextData = null;
         }
 
-        public void setNext(LinkedListNode<T> next){
+        void setNext(LinkedListNode<T> next){
             nextData = next;
         }
 
-        public LinkedListNode<T> getNext(){
+        LinkedListNode<T> getNext(){
             return nextData;
         }
 
-        public T getData(){
+        T getData(){
             return currentData;
+        }
+
+        void setCurrentData(T data){
+            currentData=data;
         }
     }
 
@@ -80,19 +84,64 @@ public class SinglyLinkedList <T> {
 
     public boolean contains(T element){
         LinkedListNode<T> current = head;
-        if (current.getData().equals(element)){
-            return true;
-        }
-        while (current.getNext() != null){
-            current = current.getNext();
+        while (current != null){
             if (current.getData().equals(element)){
                 return true;
             }
+            current = current.getNext();
         }
         return false;
     }
 
-    //	- find -- returns the element's index if it is in the list, -1 otherwise
-    //	- copy -- returns a new linked list containing the same values (look up deep versus shallow copy)
-    //	- sort -- sorts the list using your algorithm of choice. You must perform the sorting yourself (no fair using someone else's library)
+    public int find(T element){
+        LinkedListNode<T> current = head;
+        int index = 0;
+        while (current != null){
+            if (current.getData().equals(element)){
+                return index;
+            }
+            current = current.getNext();
+            index++;
+        }
+        return -1;
+    }
+
+    public SinglyLinkedList<T> copy(){
+        SinglyLinkedList<T> copy = new SinglyLinkedList<T>();
+        LinkedListNode<T> current = head;
+        for (int i = 0; i<listSize;i++){
+            copy.add(current.getData());
+            current = current.getNext();
+        }
+        return copy;
+    }
+
+    public void sort(){
+        LinkedListNode<T> current = head;
+        LinkedListNode<T> next = current.getNext();
+        for (int i=0; i<listSize; i++) {
+            while (next != null) {
+                if (current.getData().compareTo(next.getData()) > 0) {
+                    T data = current.getData();
+                    current.setCurrentData(next.getData());
+                    next.setCurrentData(data);
+                }
+                current = next;
+                next = next.getNext();
+            }
+        }
+    }
+
+    public boolean equals(SinglyLinkedList<T> singlyLinkedList){
+        LinkedListNode<T> current = head;
+        if (singlyLinkedList.size()!=listSize)
+            return false;
+        for (int i = 0 ; i<listSize;i++){
+            if (!singlyLinkedList.get(i).equals(current.getData())) {
+                return false;
+            }
+            current = current.getNext();
+        }
+        return true;
+    }
 }
