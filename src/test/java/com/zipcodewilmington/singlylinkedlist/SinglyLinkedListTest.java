@@ -22,6 +22,30 @@ public class SinglyLinkedListTest {
         singlyLinkedList.add(1);
         singlyLinkedList.add(2);
         Assertions.assertEquals(1,singlyLinkedList.get(0));
-        Assertions.assertEquals(2, singlyLinkedList.getSize());
+        Assertions.assertEquals(2, singlyLinkedList.size());
+    }
+    @Test
+    void linkListRemove(){
+        SinglyLinkedList singlyLinkedList = new SinglyLinkedList();
+        singlyLinkedList.add(1);
+        singlyLinkedList.add(2);
+        singlyLinkedList.add(3);
+        singlyLinkedList.remove(0);
+        Assertions.assertNotEquals(1,singlyLinkedList.get(0));
+        singlyLinkedList.remove(4);
+        Assertions.assertEquals(2,singlyLinkedList.size());
+        Assertions.assertEquals(2,singlyLinkedList.get(0));
+        singlyLinkedList.remove(1);
+        Assertions.assertEquals(1,singlyLinkedList.size());
+        Assertions.assertEquals(2,singlyLinkedList.get(0));
+    }
+    @Test
+    void listContains(){
+        SinglyLinkedList singlyLinkedList = new SinglyLinkedList();
+        singlyLinkedList.add(1);
+        singlyLinkedList.add(2);
+        singlyLinkedList.add(3);
+        Assertions.assertTrue(singlyLinkedList.contains(1));
+        Assertions.assertFalse(singlyLinkedList.contains(5));
     }
 }

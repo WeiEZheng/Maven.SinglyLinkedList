@@ -53,12 +53,45 @@ public class SinglyLinkedList <T> {
         return current.getData();
     }
 
-    public int getSize() {
+    public int size() {
         return listSize;
     }
 
-    //	- remove -- remove an element (specified by numeric index) from the list
-    //	- contains -- returns true if the element is in the list, false otherwise
+    public void remove(int index){
+        int count=0;
+        if (index>listSize)
+            return;
+        if (index==0) {
+            head = head.getNext();
+            listSize--;
+        }
+        else {
+            LinkedListNode<T> current = head;
+            LinkedListNode<T> previous = null;
+            while (count != index) {
+                previous = current;
+                current = current.getNext();
+                count++;
+            }
+            previous.setNext(current.getNext());
+            listSize--;
+        }
+    }
+
+    public boolean contains(T element){
+        LinkedListNode<T> current = head;
+        if (current.getData().equals(element)){
+            return true;
+        }
+        while (current.getNext() != null){
+            current = current.getNext();
+            if (current.getData().equals(element)){
+                return true;
+            }
+        }
+        return false;
+    }
+
     //	- find -- returns the element's index if it is in the list, -1 otherwise
     //	- copy -- returns a new linked list containing the same values (look up deep versus shallow copy)
     //	- sort -- sorts the list using your algorithm of choice. You must perform the sorting yourself (no fair using someone else's library)
