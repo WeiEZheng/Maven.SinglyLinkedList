@@ -5,6 +5,7 @@ package com.zipcodewilmington.singlylinkedlist;
  */
 public class SinglyLinkedList <T extends Comparable> {
     private LinkedListNode<T> head;
+    private LinkedListNode<T> tail;
     private int listSize;
 
     public static class LinkedListNode<T> {
@@ -38,12 +39,14 @@ public class SinglyLinkedList <T extends Comparable> {
         if (head==null)
             head=thisNode;
         else {
-            LinkedListNode<T> next = head;
-            while (next.getNext() != null) {
-                next = next.getNext();
-            }
-            next.setNext(thisNode);
+            tail.setNext(thisNode);
+//            LinkedListNode<T> next = head;
+//            while (next.getNext() != null) {
+//                next = next.getNext();
+//            }
+//            next.setNext(thisNode);
         }
+        tail = thisNode;
         listSize++;
     }
 
@@ -163,6 +166,7 @@ public class SinglyLinkedList <T extends Comparable> {
         LinkedListNode<T> current = head.getNext();
         LinkedListNode<T> previous = head;
         LinkedListNode<T> next;
+        tail = head;
         while (current!=null){
             next = current.getNext();
             current.setNext(previous);

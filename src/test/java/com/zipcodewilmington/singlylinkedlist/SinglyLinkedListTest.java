@@ -139,8 +139,10 @@ public class SinglyLinkedListTest {
         singlyLinkedList1.add(3);
         singlyLinkedList1.add(2);
         singlyLinkedList1.add(1);
+        singlyLinkedList1.add(1);
         //When
         singlyLinkedList.reverse();
+        singlyLinkedList.add(1);
         //Then
         Assertions.assertTrue(singlyLinkedList1.equals(singlyLinkedList));
     }
