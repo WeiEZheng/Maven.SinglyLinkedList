@@ -103,7 +103,6 @@ public class SinglyLinkedListTest {
         expectedSort.add(3);
         //When
         singlyLinkedList.sort();
-        singlyLinkedList.print();
         //Then
         Assertions.assertTrue(singlyLinkedList.equals(expectedSort));
     }
