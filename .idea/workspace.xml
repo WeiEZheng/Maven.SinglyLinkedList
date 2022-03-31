@@ -162,6 +162,8 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
@@ -169,7 +171,7 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
   </component>
-  <component name="RunManager" selected="JUnit.SinglyLinkedListTest">
+  <component name="RunManager" selected="JUnit.SinglyLinkedListTest.sort">
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
       <module name="" />
       <option name="TESTING_TYPE" value="0" />
@@ -341,9 +343,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.SinglyLinkedListTest.sort" />
         <item itemvalue="JUnit.SinglyLinkedListTest" />
         <item itemvalue="JUnit.SinglyLinkedListTest.reverse" />
-        <item itemvalue="JUnit.SinglyLinkedListTest.sort" />
         <item itemvalue="JUnit.SinglyLinkedListTest.copy" />
         <item itemvalue="JUnit.SinglyLinkedListTest.listContains" />
       </list>

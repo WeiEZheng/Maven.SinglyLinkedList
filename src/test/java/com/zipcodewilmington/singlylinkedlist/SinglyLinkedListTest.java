@@ -92,9 +92,9 @@ public class SinglyLinkedListTest {
     void sort(){
         //Given
         SinglyLinkedList singlyLinkedList = new SinglyLinkedList();
-        singlyLinkedList.add(1);
         singlyLinkedList.add(3);
         singlyLinkedList.add(2);
+        singlyLinkedList.add(1);
         singlyLinkedList.add(3);
         SinglyLinkedList expectedSort = new SinglyLinkedList();
         expectedSort.add(1);
@@ -103,6 +103,7 @@ public class SinglyLinkedListTest {
         expectedSort.add(3);
         //When
         singlyLinkedList.sort();
+        singlyLinkedList.print();
         //Then
         Assertions.assertTrue(singlyLinkedList.equals(expectedSort));
     }

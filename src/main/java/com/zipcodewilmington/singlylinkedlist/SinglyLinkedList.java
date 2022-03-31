@@ -12,32 +12,32 @@ public class SinglyLinkedList <T extends Comparable> {
         T currentData;
         LinkedListNode<T> nextData;
 
-        LinkedListNode(T currentData){
+        LinkedListNode(T currentData) {
             this.currentData = currentData;
             this.nextData = null;
         }
 
-        void setNext(LinkedListNode<T> next){
+        void setNext(LinkedListNode<T> next) {
             nextData = next;
         }
 
-        LinkedListNode<T> getNext(){
+        LinkedListNode<T> getNext() {
             return nextData;
         }
 
-        T getData(){
+        T getData() {
             return currentData;
         }
 
-        void setCurrentData(T data){
-            currentData=data;
+        void setCurrentData(T data) {
+            currentData = data;
         }
     }
 
-    public void add(T element){
+    public void add(T element) {
         LinkedListNode<T> thisNode = new LinkedListNode<T>(element);
-        if (head==null)
-            head=thisNode;
+        if (head == null)
+            head = thisNode;
         else {
             tail.setNext(thisNode);
 //            LinkedListNode<T> next = head;
@@ -50,11 +50,11 @@ public class SinglyLinkedList <T extends Comparable> {
         listSize++;
     }
 
-    public T get(int index){
-        int count=0;
+    public T get(int index) {
+        int count = 0;
         LinkedListNode<T> current = head;
-        while (count!=index){
-            current=current.getNext();
+        while (count != index) {
+            current = current.getNext();
             count++;
         }
         return current.getData();
@@ -64,15 +64,14 @@ public class SinglyLinkedList <T extends Comparable> {
         return listSize;
     }
 
-    public void remove(int index){
-        int count=0;
-        if (index>listSize)
+    public void remove(int index) {
+        int count = 0;
+        if (index > listSize)
             return;
-        if (index==0) {
+        if (index == 0) {
             head = head.getNext();
             listSize--;
-        }
-        else {
+        } else {
             LinkedListNode<T> current = head;
             LinkedListNode<T> previous = null;
             while (count != index) {
@@ -85,10 +84,10 @@ public class SinglyLinkedList <T extends Comparable> {
         }
     }
 
-    public boolean contains(T element){
+    public boolean contains(T element) {
         LinkedListNode<T> current = head;
-        while (current != null){
-            if (current.getData().equals(element)){
+        while (current != null) {
+            if (current.getData().equals(element)) {
                 return true;
             }
             current = current.getNext();
@@ -96,11 +95,11 @@ public class SinglyLinkedList <T extends Comparable> {
         return false;
     }
 
-    public int find(T element){
+    public int find(T element) {
         LinkedListNode<T> current = head;
         int index = 0;
-        while (current != null){
-            if (current.getData().equals(element)){
+        while (current != null) {
+            if (current.getData().equals(element)) {
                 return index;
             }
             current = current.getNext();
@@ -109,20 +108,20 @@ public class SinglyLinkedList <T extends Comparable> {
         return -1;
     }
 
-    public SinglyLinkedList<T> copy(){
+    public SinglyLinkedList<T> copy() {
         SinglyLinkedList<T> copy = new SinglyLinkedList<T>();
         LinkedListNode<T> current = head;
-        for (int i = 0; i<listSize;i++){
+        for (int i = 0; i < listSize; i++) {
             copy.add(current.getData());
             current = current.getNext();
         }
         return copy;
     }
 
-    public void sort(){
+    public void sort() {
         LinkedListNode<T> current = head;
         LinkedListNode<T> next = current.getNext();
-        for (int i=0; i<listSize; i++) {
+        for (int i = 0; i < listSize; i++) {
             while (next != null) {
                 if (current.getData().compareTo(next.getData()) > 0) {
                     T data = current.getData();
@@ -132,14 +131,16 @@ public class SinglyLinkedList <T extends Comparable> {
                 current = next;
                 next = next.getNext();
             }
+            current = head;
+            next = current.getNext();
         }
     }
 
-    public boolean equals(SinglyLinkedList<T> singlyLinkedList){
+    public boolean equals(SinglyLinkedList<T> singlyLinkedList) {
         LinkedListNode<T> current = head;
-        if (singlyLinkedList.size()!=listSize)
+        if (singlyLinkedList.size() != listSize)
             return false;
-        for (int i = 0 ; i<listSize;i++){
+        for (int i = 0; i < listSize; i++) {
             if (!singlyLinkedList.get(i).equals(current.getData())) {
                 return false;
             }
@@ -148,13 +149,13 @@ public class SinglyLinkedList <T extends Comparable> {
         return true;
     }
 
-    public SinglyLinkedList<T> splice(int start, int end){
+    public SinglyLinkedList<T> splice(int start, int end) {
         LinkedListNode<T> current = head;
         SinglyLinkedList newList = new SinglyLinkedList();
-        if (end>listSize)
-            end=listSize;
-        for (int i = 0; i<end;i++){
-            if (i>=start){
+        if (end > listSize)
+            end = listSize;
+        for (int i = 0; i < end; i++) {
+            if (i >= start) {
                 newList.add(current.getData());
             }
             current = current.getNext();
@@ -162,12 +163,12 @@ public class SinglyLinkedList <T extends Comparable> {
         return newList;
     }
 
-    public void reverse(){
+    public void reverse() {
         LinkedListNode<T> current = head.getNext();
         LinkedListNode<T> previous = head;
         LinkedListNode<T> next;
         tail = head;
-        while (current!=null){
+        while (current != null) {
             next = current.getNext();
             current.setNext(previous);
             previous = current;
